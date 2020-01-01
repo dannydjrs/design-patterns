@@ -1,18 +1,18 @@
-<?php 
+<?php
 
 class Storage implements Singleton
 {
 	/** @var Storage */
 	private static $instance;
 	/** @var array */
-	private static $storage;
+	private $storage;
 
-	private function __construct() 
+	private function __construct()
 	{
-		self::$storage = [];
+		$this->storage = [];
 	}
 
-	public static function getInstance() 
+	public static function getInstance()
 	{
 		if (self::$instance == null)
 		{
@@ -22,14 +22,13 @@ class Storage implements Singleton
 		return self::$instance;
 	}
 
-	public static function get($index) 
+	public function get($index)
 	{
-		return self::$storage[$index];
+		return $this->storage[$index];
 	}
 
-	public static function set($index, $value)
+	public function set($index, $value)
 	{
-		self::$storage[$index] = $value;
+		$this->storage[$index] = $value;
 	}
 }
-
